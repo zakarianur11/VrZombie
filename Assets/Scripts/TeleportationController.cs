@@ -11,19 +11,28 @@ public class FallDetector : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(5f);
-        TeleportToTarget();
+        TeleportToMainStructure();
     }
-    private void TeleportToTarget()
+
+    private void TeleportToMainStructure()
     {
         this.transform.position = TargetPosition.position;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            TeleportToTarget();
+            TeleportToMainStructure();
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the collided object is MainStructure
+        if (other.CompareTag("MainStructure"))
+        {
+            TeleportToMainStructure();
+        }
+    }
 }
