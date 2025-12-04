@@ -37,6 +37,7 @@ public class LiftTeleportBB : MonoBehaviour
 
         // Move the entire rig directly to the liftTopPoint
         playerRig.position = liftTopPoint.position;
+        playerRig.rotation = liftTopPoint.rotation;
 
         // Re-enable CharacterController
         if (controller != null) controller.enabled = true;
